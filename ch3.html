@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>03 RoseTTAFold · AI 与蛋白质结构</title>
+<meta name="theme-color" content="#002060">
+<meta property="og:title" content="AI 与蛋白质结构 · AlphaFold 与 RoseTTAFold">
+<meta property="og:description" content="从实验解析到深度学习预测、再到蛋白质设计的交互式专题。">
+<meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -16,9 +20,12 @@
       <a href="ch2.html">AlphaFold</a>
       <a href="ch3.html">RoseTTAFold</a>
       <a href="ch4.html">未来与反思</a>
+      <a href="resources.html">资源</a>
       <a href="references.html">文献</a>
       <a href="quiz.html">自测</a>
     </nav>
+    <button id="menuBtn" aria-label="展开目录" aria-expanded="false">☰</button>
+    <span class="pct" id="pct">0%</span>
     <div class="searchwrap">
       <input id="q" type="search" placeholder="搜索：CASP / pLDDT / RFdiffusion" aria-label="站内搜索">
       <div id="hits"></div>
@@ -32,6 +39,11 @@
     <div class="kicker">CHAPTER 03</div>
     <h1>RoseTTAFold：原理 → 发展 → 应用</h1>
     <p>几乎与 AlphaFold2 同期出现的另一条技术路线：把序列、残基间几何与三维坐标放进同一个网络并行建模，以较低算力取得接近的精度，并把预测推进到设计与全原子。</p>
+  </div>
+
+  <div class="takeaway reveal">
+    <b>本章要点</b>
+    <ul><li>三轨网络让三维坐标参与中间层，以较低算力取得接近的精度。</li><li>同一表示被延伸为设计（RFdiffusion）与全原子建模（All-Atom）。</li><li>应用定位是“帮助实验”，分子置换与功能注释是最直接的两类。</li></ul>
   </div>
 
   <div class="layout">
@@ -104,7 +116,7 @@
         <h3 class="sub">3.2.2　RFdiffusion：从预测到设计（互动）</h3>
         <div class="grid2 narrow">
           <div class="reveal">
-            <p><span class="key">基本思路：</span>把蛋白骨架看作可加噪的三维坐标，用 RoseTTAFold 作去噪器，从随机噪声反演回可设计骨架；序列交由 ProteinMPNN 设计<sup class="cite">[12]</sup>。</p>
+            <p><span class="key">基本思路：</span>把蛋白骨架看作可加噪的三维坐标，用 RoseTTAFold 作去噪器（<a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noopener">RFdiffusion 代码</a>），从随机噪声反演回可设计骨架；序列交由 ProteinMPNN 设计<sup class="cite">[12]</sup>。</p>
             <p><span class="key">条件设计：</span>对称性、结合靶标、功能基序以坐标或掩码注入，同一模型可产出单体、对称寡聚体、结合蛋白与基序支架<sup class="cite">[12]</sup>。</p>
             <p style="font-size:13px;color:var(--muted)">拖动滑块控制“去噪步数”，观察随机点如何收敛为一条可折叠的骨架。</p>
             <div class="slider-row">
@@ -133,7 +145,7 @@
           </figure>
           <div class="reveal">
             <p><span class="key">全原子表示：</span>蛋白与核酸按残基/碱基表示，其余组分按原子图表示——1D 编码元素类型，2D 编码化学键，3D 编码手性<sup class="cite">[11]</sup>。</p>
-            <p><span class="key">架构与训练：</span>36 个主区块 + 4 个精修层，全原子 FAPE 损失；训练集约 12 万条蛋白—小分子结构、11 万条蛋白—金属结构<sup class="cite">[11]</sup>。</p>
+            <p><span class="key">架构与训练：</span><a href="https://github.com/baker-laboratory/RoseTTAFold-All-Atom" target="_blank" rel="noopener">All-Atom</a>：36 个主区块 + 4 个精修层，全原子 FAPE 损失；训练集约 12 万条蛋白—小分子结构、11 万条蛋白—金属结构<sup class="cite">[11]</sup>。</p>
             <div class="note">意义：预测对象从“蛋白”扩展到“生物分子体系”，为酶活性位点设计、金属配位建模与共价药物研究提供统一基础。</div>
           </div>
         </div>
@@ -210,5 +222,6 @@
 </footer>
 <script src="assets/js/core.js"></script>
 <script src="assets/js/widgets.js"></script>
+<button id="fab" aria-label="回到顶部">↑</button>
 </body>
 </html>

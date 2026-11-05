@@ -139,3 +139,31 @@ const INDEX = [
     if (e.key === '/' && !/input|textarea/i.test(e.target.tagName)) { e.preventDefault(); input.focus(); }
   });
 })();
+
+/* ============ 移动端菜单 / 回顶按钮 / 进度百分比 ============ */
+(function () {
+  const btn = document.getElementById('menuBtn');
+  const nav = document.querySelector('header.top nav.main');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? '✕' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open'); btn.textContent = '☰'; btn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+  const fab = document.getElementById('fab');
+  const pct = document.getElementById('pct');
+  function upd() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max > 0 ? h.scrollTop / max : 0;
+    if (fab) fab.classList.toggle('show', h.scrollTop > 600);
+    if (pct) pct.textContent = Math.round(p * 100) + '%';
+  }
+  document.addEventListener('scroll', upd, { passive: true });
+  upd();
+  if (fab) fab.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();

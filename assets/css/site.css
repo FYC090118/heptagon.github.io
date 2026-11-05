@@ -283,3 +283,82 @@ body.js .reveal.in{opacity:1;transform:none}
   .reveal{opacity:1!important;transform:none!important}
   body{background:#fff}
 }
+
+/* ---------------- 移动端菜单 / 回顶 / 进度百分比 ---------------- */
+#menuBtn{display:none;border:1px solid var(--line);background:#fff;border-radius:10px;width:38px;height:38px;font-size:17px;color:var(--navy);cursor:pointer}
+#menuBtn:hover{border-color:var(--blue);color:var(--blue)}
+.pct{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:12px;letter-spacing:.5px}
+#fab{
+  position:fixed;right:22px;bottom:26px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  background:#fff;color:var(--navy);cursor:pointer;box-shadow:0 8px 22px rgba(0,32,96,.14);
+  display:flex;align-items:center;justify-content:center;font-size:18px;opacity:0;pointer-events:none;
+  transition:.22s;z-index:60;
+}
+#fab.show{opacity:1;pointer-events:auto}
+#fab:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+@media (max-width:860px){
+  #menuBtn{display:inline-flex;align-items:center;justify-content:center}
+  header.top nav.main.open{
+    display:flex;position:absolute;left:0;right:0;top:64px;background:#fff;border-bottom:1px solid var(--line);
+    padding:10px 16px;box-shadow:0 12px 24px rgba(0,32,96,.08);flex-direction:column;gap:2px;
+  }
+  header.top nav.main.open a{padding:11px 12px;font-size:14.5px}
+  header.top .bar{position:relative}
+  .pct{display:none}
+}
+
+/* ---------------- 首页装饰图 ---------------- */
+.hero-art{
+  position:absolute;right:12px;top:34px;width:min(38vw,480px);height:auto;opacity:0;
+  animation:artIn 1.1s .25s cubic-bezier(.22,.61,.36,1) forwards;
+}
+@keyframes artIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:.96;transform:none}}
+.hero-art .nodes circle{animation:pulse 3.2s ease-in-out infinite}
+.hero-art .nodes circle:nth-child(2){animation-delay:.4s}
+.hero-art .nodes circle:nth-child(3){animation-delay:.8s}
+.hero-art .nodes circle:nth-child(4){animation-delay:1.2s}
+.hero-art .nodes circle:nth-child(5){animation-delay:1.6s}
+@keyframes pulse{0%,100%{opacity:.55;r:5}50%{opacity:1;r:7}}
+@media (max-width:1100px){.hero-art{display:none}}
+@media (prefers-reduced-motion:reduce){.hero-art{animation:none;opacity:.96}.hero-art .nodes circle{animation:none}}
+
+/* 窄屏：搜索换行、菜单铺满 */
+@media (max-width:640px){
+  header.top .bar{flex-wrap:wrap;row-gap:8px}
+  header.top .searchwrap{order:9;margin-left:0;width:100%}
+  header.top .searchwrap input{width:100%}
+  header.top .searchwrap input:focus{width:100%}
+  #hits{left:0;right:0;width:100%}
+  header.top nav.main.open{top:100%}
+}
+
+/* ---------------- 资源卡片 ---------------- */
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}
+.res{
+  display:block;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  transition:.2s;color:inherit;position:relative;overflow:hidden;
+}
+.res:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#c6d7ea;text-decoration:none}
+.res .tag{font-size:11px;color:var(--blue);background:var(--soft);border-radius:999px;padding:3px 10px}
+.res h3{font-size:16.5px;margin:10px 0 6px}
+.res p{font-size:13.2px;color:var(--muted);margin:0}
+.res .link{display:block;margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--blue)}
+@media (max-width:860px){.res-grid{grid-template-columns:1fr}}
+
+/* 文献链接 */
+.ref-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.ref-links a{
+  font-size:11.5px;color:var(--blue);border:1px solid var(--line);border-radius:999px;
+  padding:2px 9px;background:#fff;transition:.15s;
+}
+.ref-links a:hover{border-color:var(--blue);background:var(--soft);text-decoration:none}
+
+/* ---------------- 本章要点 ---------------- */
+.takeaway{
+  background:linear-gradient(135deg,#f3f7fd,#eef4fb);border:1px solid #d9e5f4;border-left:4px solid var(--blue);
+  border-radius:0 16px 16px 0;padding:16px 22px;margin:6px 0 26px;
+}
+.takeaway b{display:block;font-size:13px;letter-spacing:1.4px;color:var(--blue);margin-bottom:8px}
+.takeaway ul{margin:0;padding-left:1.1em}
+.takeaway li{font-size:13.8px;color:var(--navy);margin:5px 0}
+.takeaway li:before{content:"·";color:var(--amber);margin-right:4px}

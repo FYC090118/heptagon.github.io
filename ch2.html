@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>02 AlphaFold · AI 与蛋白质结构</title>
+<meta name="theme-color" content="#002060">
+<meta property="og:title" content="AI 与蛋白质结构 · AlphaFold 与 RoseTTAFold">
+<meta property="og:description" content="从实验解析到深度学习预测、再到蛋白质设计的交互式专题。">
+<meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -16,9 +20,12 @@
       <a href="ch2.html">AlphaFold</a>
       <a href="ch3.html">RoseTTAFold</a>
       <a href="ch4.html">未来与反思</a>
+      <a href="resources.html">资源</a>
       <a href="references.html">文献</a>
       <a href="quiz.html">自测</a>
     </nav>
+    <button id="menuBtn" aria-label="展开目录" aria-expanded="false">☰</button>
+    <span class="pct" id="pct">0%</span>
     <div class="searchwrap">
       <input id="q" type="search" placeholder="搜索：CASP / pLDDT / RFdiffusion" aria-label="站内搜索">
       <div id="hits"></div>
@@ -34,11 +41,16 @@
     <p>AlphaFold2 的突破并非单一技巧，而是多序列比对、注意力机制、端到端训练与迭代优化共同作用的结果；理解其构成，才可能理解它的边界。</p>
   </div>
 
+  <div class="takeaway reveal">
+    <b>本章要点</b>
+    <ul><li>AlphaFold2 = 双轨表示（MSA + 残基对）+ 结构模块 + 三轮回环。</li><li>自蒸馏与 recycling 是在实验数据受限时的训练策略，而非新数据来源。</li><li>pLDDT 与 PAE 是使用模型的前提：先判断可信度，再谈结论。</li></ul>
+  </div>
+
   <div class="layout">
     <article>
       <section class="sec" id="s21">
         <h2><span class="num">2.1</span>预测问题的由来</h2>
-        <div class="sub">从 Anfinsen 法则（序列决定结构）到 CASP 盲测体系，计算预测走过了半个世纪。</div>
+        <div class="sub">从 Anfinsen 法则（序列决定结构）到 <a href="https://predictioncenter.org/" target="_blank" rel="noopener">CASP 盲测体系</a>，计算预测走过了半个世纪。</div>
         <div class="grid2 narrow">
           <div class="timeline reveal" id="timeline"></div>
           <div class="tl-body reveal" id="tlBody"></div>
@@ -102,7 +114,7 @@
           </figure>
           <div class="reveal">
             <p>2020 年 CASP14：AlphaFold2 中位 GDT 92.4，主链 Cα r.m.s.d. 0.96 Å（次优约 2.8 Å），全原子精度约 1.5 Å 对次优 3.5 Å 的差距被反超<sup class="cite">[8]</sup>。</p>
-            <p>此后进入版本迭代：AF2 → AF2-Multimer → AF3（2024），能力从单体扩展到核酸、配体与共价修饰<sup class="cite">[10]</sup>；同期 AlphaFold 数据库覆盖 2 亿余条结构<sup class="cite">[3,4]</sup>。</p>
+            <p>此后进入版本迭代：AF2 → AF2-Multimer → AF3（2024），能力从单体扩展到核酸、配体与共价修饰<sup class="cite">[10]</sup>；同期 <a href="https://alphafold.ebi.ac.uk/" target="_blank" rel="noopener">AlphaFold 数据库</a>覆盖 2 亿余条结构<sup class="cite">[3,4]</sup>。</p>
             <div class="note">开放程度的对比值得注意：AF2 代码开源，AF3 至今未开放训练代码，这成为 2024 年学术界的公开争议之一<sup class="cite">[5]</sup>。</div>
           </div>
         </div>
@@ -127,7 +139,7 @@
               <li><span class="key">结构解析辅助：</span>作为分子置换的搜索模板，或与电镜密度图拟合，缩短建模周期<sup class="cite">[5,6]</sup>。</li>
               <li><span class="key">功能与机制研究：</span>为缺乏实验结构的蛋白提供结构假设，用于突变效应与口袋分析<sup class="cite">[4]</sup>。</li>
               <li><span class="key">药物发现：</span>辅助可成药性评估、虚拟筛选与先导化合物优化；结合构象仍需实验确证<sup class="cite">[3,6]</sup>。</li>
-              <li><span class="key">规模化分析：</span>数据库化改变了使用方式——先查库、再算新<sup class="cite">[3,4]</sup>。</li>
+              <li><span class="key">规模化分析：</span><a href="https://alphafold.ebi.ac.uk/" target="_blank" rel="noopener">数据库化</a>改变了使用方式——先查库、再算新<sup class="cite">[3,4]</sup>。</li>
             </ul>
             <div class="note warn">共识：先用预测压缩试错空间，再用实验确证；涉及构象变化、翻译后修饰与配体结合的场合尤其如此<sup class="cite">[5,6]</sup>。</div>
           </div>
@@ -168,5 +180,6 @@
 </footer>
 <script src="assets/js/core.js"></script>
 <script src="assets/js/widgets.js"></script>
+<button id="fab" aria-label="回到顶部">↑</button>
 </body>
 </html>

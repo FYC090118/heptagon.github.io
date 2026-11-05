@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>01 结构研究的基础 · AI 与蛋白质结构</title>
+<meta name="theme-color" content="#002060">
+<meta property="og:title" content="AI 与蛋白质结构 · AlphaFold 与 RoseTTAFold">
+<meta property="og:description" content="从实验解析到深度学习预测、再到蛋白质设计的交互式专题。">
+<meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -16,9 +20,12 @@
       <a href="ch2.html">AlphaFold</a>
       <a href="ch3.html">RoseTTAFold</a>
       <a href="ch4.html">未来与反思</a>
+      <a href="resources.html">资源</a>
       <a href="references.html">文献</a>
       <a href="quiz.html">自测</a>
     </nav>
+    <button id="menuBtn" aria-label="展开目录" aria-expanded="false">☰</button>
+    <span class="pct" id="pct">0%</span>
     <div class="searchwrap">
       <input id="q" type="search" placeholder="搜索：CASP / pLDDT / RFdiffusion" aria-label="站内搜索">
       <div id="hits"></div>
@@ -32,6 +39,11 @@
     <div class="kicker">CHAPTER 01</div>
     <h1>结构研究的基础</h1>
     <p>在预测成为可能之前，结构生物学依靠三种互补的实验手段积累数据；它们各自的适用范围与限制，正是计算预测得以介入的现实起点。</p>
+  </div>
+
+  <div class="takeaway reveal">
+    <b>本章要点</b>
+    <ul><li>X 射线、NMR 与冷冻电镜各自的分辨率、样品要求与适用对象不同，但都需要足量、均一的样品。</li><li>因此结构解析的通量受限于样品制备，难以跟上基因组测序的序列增长速度。</li><li>这构成了“只从序列预测结构”这一问题的现实起点。</li></ul>
   </div>
 
   <div class="layout">
@@ -142,5 +154,6 @@
 </footer>
 <script src="assets/js/core.js"></script>
 <script src="assets/js/widgets.js"></script>
+<button id="fab" aria-label="回到顶部">↑</button>
 </body>
 </html>

@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>04 未来与反思 · AI 与蛋白质结构</title>
+<meta name="theme-color" content="#002060">
+<meta property="og:title" content="AI 与蛋白质结构 · AlphaFold 与 RoseTTAFold">
+<meta property="og:description" content="从实验解析到深度学习预测、再到蛋白质设计的交互式专题。">
+<meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -16,9 +20,12 @@
       <a href="ch2.html">AlphaFold</a>
       <a href="ch3.html">RoseTTAFold</a>
       <a href="ch4.html">未来与反思</a>
+      <a href="resources.html">资源</a>
       <a href="references.html">文献</a>
       <a href="quiz.html">自测</a>
     </nav>
+    <button id="menuBtn" aria-label="展开目录" aria-expanded="false">☰</button>
+    <span class="pct" id="pct">0%</span>
     <div class="searchwrap">
       <input id="q" type="search" placeholder="搜索：CASP / pLDDT / RFdiffusion" aria-label="站内搜索">
       <div id="hits"></div>
@@ -32,6 +39,11 @@
     <div class="kicker">CHAPTER 04</div>
     <h1>未来与反思</h1>
     <p>预测精度已不再是唯一问题。尚未解决的技术问题、正在展开的设计范式，以及随之而来的开放性与安全性争议，共同构成这一领域下一阶段的议题。</p>
+  </div>
+
+  <div class="takeaway reveal">
+    <b>本章要点</b>
+    <ul><li>复合物界面、无序区、侧链与配体仍是主要误差来源。</li><li>蛋白质语言模型正在绕开 MSA，把预测推向单序列与宏基因组尺度。</li><li>开放性与双重用途，是技术之外同样需要讨论的问题。</li></ul>
   </div>
 
   <div class="layout">
@@ -69,7 +81,7 @@
             <div class="pbar" style="margin-top:12px"><i id="esmBar2" style="background:#c9801d;width:61.8%"></i></div>
           </div>
         </div>
-        <p style="font-size:13px;color:var(--muted);margin-top:12px">结论：在完全不使用 MSA 的条件下，把语言模型从 8M 扩到 15B，主链误差持续下降、置信度持续上升；15B 模型已用于 6.17 亿条宏基因组序列的批量预测，其中 2.25 亿条为高置信度<sup class="cite">[13]</sup>。</p>
+        <p style="font-size:13px;color:var(--muted);margin-top:12px">结论：在完全不使用 MSA 的条件下，把语言模型从 8M 扩到 15B，主链误差持续下降、置信度持续上升；15B 模型已用于 <a href="https://esmatlas.com/" target="_blank" rel="noopener">ESM 宏基因组图谱</a>中 6.17 亿条序列的批量预测，其中 2.25 亿条为高置信度<sup class="cite">[13]</sup>。</p>
       </section>
 
       <section class="sec" id="s43">
@@ -124,5 +136,6 @@
 </footer>
 <script src="assets/js/core.js"></script>
 <script src="assets/js/widgets.js"></script>
+<button id="fab" aria-label="回到顶部">↑</button>
 </body>
 </html>

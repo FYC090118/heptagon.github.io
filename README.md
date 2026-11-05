@@ -10,7 +10,8 @@ ch1.html            第一章 结构研究的基础（三类实验方法）
 ch2.html            第二章 AlphaFold（架构、pLDDT 判读器、发展与应用）
 ch3.html            第三章 RoseTTAFold（三轨交互、RFdiffusion 去噪演示、All-Atom）
 ch4.html            第四章 未来与反思（ESM 规模滑块、科学与社会）
-references.html     参考文献（按语种筛选、可展开要点）
+references.html     参考文献（按语种筛选、可展开要点、DOI/全文/检索链接）
+resources.html      资源导航（AFDB、PDB、CASP、代码仓库、ESM Atlas 等）
 quiz.html           五道自测题（即时判分与解析）
 assets/css/site.css 全站样式
 assets/js/core.js   进度条、滚动显现、右侧导航、站内搜索
